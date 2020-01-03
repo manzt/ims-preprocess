@@ -28,8 +28,11 @@ class IMSDataset:
 
     def to_columnar(self):
         mzs, _ = self.parser.getspectrum(0)
-        df = pd.DataFrame(iter(self), dtype="uint32")
-        df.columns = np.concatenate((self.coord_fields, np.round(mzs, 4)))
+        df = pd.DataFrame(
+            iter(self),
+            columns=np.concatenate((self.coord_fields, np.round(mzs, 4))),
+            dtype="uint32",
+        )
         return df
 
 
