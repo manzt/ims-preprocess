@@ -20,8 +20,8 @@ class IMSDataset:
 
     def __iter__(self):
         for idx, (x, y, z) in enumerate(self.parser.coordinates):
-            micro_x_topleft = x * 20 - self.IMS_px_in_micro
-            micro_y_topleft = y * 20 - self.IMS_px_in_micro
+            micro_x_topleft = x * self.IMS_px_in_micro - self.IMS_px_in_micro
+            micro_y_topleft = y * self.IMS_px_in_micro - self.IMS_px_in_micro
             coords = [x, y, micro_x_topleft, micro_y_topleft, self.IMS_px_in_micro]
             _, intensities = self.parser.getspectrum(idx)
             yield np.concatenate([coords, intensities])
