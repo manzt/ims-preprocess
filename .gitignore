@@ -1,2 +1,4 @@
 data
 .vscode
+*.zarr
+*.csv
